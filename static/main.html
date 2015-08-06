@@ -33,6 +33,7 @@
             </ul>
           </div>
         </div>
+        <input  type="hidden" id="translation_language">
     </nav>
     <div>
         <div ng-view></div>
@@ -62,19 +63,16 @@
     <script type="text/javascript" src="shared/js/lazy-load.js"></script>
     <script type="text/javascript" src="shared/js/service.js"></script>
     <script type="text/javascript" src="shared/js/model.js"></script>
-
+    <script type="text/javascript" src="shared/js/spellscape/translations.js"></script>
     <!-- Angular Translation -->
     <script type="text/JavaScript" src="shared/js/spellscape/angular-gettext.min.js"></script>
     <script type="text/JavaScript" src="shared/js/spellscape/angular-spellscape.js"></script>
-    <script type="text/JavaScript" src="shared/js/spellscape/page-load.js"></script>
+
     <!-- <script type="text/JavaScript" src="shared/js/spellscape/translations.js"></script> -->
 
     <script type="text/JavaScript">
-        $(document).ready(function(){
-            window.addEventListener("message", function(event) {
-              if (event.source != window)
-                return;
 
+            window.addEventListener("message", function(event) {
 
               if (event.data.type && (event.data.type == "HIGHLIGHT_TRANSLATE")) {
                     var strings = $('[translate]');
@@ -93,7 +91,7 @@
                     window.setInterval(function(){
                         val = (i%2==0)?0:1;
                         strings.animate({backgroundColor: colors[val]},3000);
-                        i++;    
+                        i++;
                     },30);
                     
               }
@@ -103,26 +101,30 @@
                 // console.log("Content script received: " + event.data.text);
                 // port.postMessage(event.data.text);
 
-                 changeAngularLanguage();
+                  $("#translation_language").val(event.data.language)
+                  angular.element('select').scope().setCurrentLanguage(event.data.language)
                   var json;
                   console.log("Angular language changed Successfuly!");
                   for ( var i = 0, len = localStorage.length; i < len; ++i ) {
                     //console.log( localStorage.getItem( localStorage.key( i ) ) );
                     json={};
                     json[localStorage.key(i)]=localStorage.getItem(localStorage.key(i));
-                    angular.element('select').scope().updateLanguage(json);                    
+
+                    angular.element('select').scope().updateLanguage(json);
                   }
+
               }
 
               else if(event.data.type && (event.data.type == "SAVE_TRANSLATION")){
 
                     var input = document.getElementById("input_text").value;
                     var translated_text = document.getElementById("translated_text").value;
-
-                    var json={};
-                    json[input]=translated_text;
+                    localStorage.clear();
+                    var local_storage_json={};
+                    local_storage_json["translated_text"]=translated_text;
+                    local_storage_json["language"]=$("#translation_language").val();
                     //console.log("value to be stored = "+ json);
-                    localStorage.setItem(input,translated_text);
+                    localStorage.setItem(input,JSON.stringify(local_storage_json));
 
                     alert('Translation Saved Successfuly');
                     angular.element('select').scope().updateLanguage(json);
@@ -130,7 +132,7 @@
               }
 
             }, false);
-        });
+
     </script>
 <!-- </section> -->
 </body>
