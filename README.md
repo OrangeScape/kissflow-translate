@@ -79,3 +79,13 @@ Chrome extension that lets users give custom translations to their Angular App.
 Sample application has been stored inside ```static/main.html``` and Angular-GetText modules have been provided inside ```static/shared/js/spellscape/```
 
 Make sure to remove the ```static``` folder when you load the Chrome plugin onto browser.
+
+## i18conv
+
+i18next-conv -l fr -s template.po -t static/shared/translation.json
+
+npm for i18
+
+npm install i18next-conv -g
+
+

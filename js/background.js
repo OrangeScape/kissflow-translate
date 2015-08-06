@@ -4,6 +4,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
         case "req-highlight":
 
         	//Set language to chosen langugage
+
 			chrome.storage.local.set({setLanguage: request.lang},function(){/**/});
 			//Call to content.js
             highlightTags(request.lang);

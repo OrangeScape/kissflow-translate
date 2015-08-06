@@ -7,7 +7,7 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 			document.getElementById("langSelect").value="string:"+message.lang; //Change the page's language dropdown
 
 			//Change the page's Angular language
-			window.postMessage({ type: "CHANGE_PAGE_LANGUAGE", text: "Hello from the webpage!" }, "*");
+			window.postMessage({ type: "CHANGE_PAGE_LANGUAGE", language:message.lang}, "*");
 
 			// var translate_elements = document.querySelectorAll("[translate]");
 			var strings = $('[translate]');
