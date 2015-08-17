@@ -5,8 +5,8 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
         	//Set language to chosen langugage
 
-			chrome.storage.local.set({setLanguage: request.lang},function(){/**/});
-			//Call to content.js
+			chrome.storage.local.set({'language': request.lang},function(){/**/});
+
             highlightTags(request.lang);
         break;
     }
