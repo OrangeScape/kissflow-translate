@@ -7,7 +7,8 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 			 //Change the page's language dropdown
 
 			//Change the page's Angular language
-			window.postMessage({ type: "CHANGE_PAGE_LANGUAGE", language:message.lang}, "*");
+
+			window.postMessage(JSON.stringify({ type: "CHANGE_PAGE_LANGUAGE", language:message.lang}), "*");
 
 			// var translate_elements = document.querySelectorAll("[translate]");
 			var strings = $('[translate]');
@@ -21,7 +22,7 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 				});
 
 				//Pass message to Browser Page
-				window.postMessage({ type: "HIGHLIGHT_TRANSLATE", text: "Hello from the webpage!" }, "*");
+				window.postMessage(JSON.stringify({ type: "HIGHLIGHT_TRANSLATE", text: "Hello from the webpage!" }), "*");
 
 				alert("Translate these strings please");
 			}

@@ -21,7 +21,6 @@
                 <button type="button" class="spellscape-btn spellscape-btn-primary" id="spellScapeSave">Save changes
                 </button>
             </div>
-
         </div>
     </div>
 </div>
@@ -33,7 +32,7 @@
     chrome.storage.local.get('language', function(result) {
       //Save Translation Function handled by Loaded Page - Localstorage functionality
       var language=result.language;
-      window.postMessage({translation_language:language,type: "SAVE_TRANSLATION", text: "Hello from the webpage!" }, "*");
+      window.postMessage(JSON.stringify({translation_language:language,type: "SAVE_TRANSLATION", text: "Hello from the webpage!" }), "*");
     });
     })
 });
