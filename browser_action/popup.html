@@ -1,24 +1,18 @@
-<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.5-dist/css/bootstrap.min.css"/>
-<div style="width:250px">
-
+<link rel="stylesheet" type="text/css" href="../bootstrap-3.3.5-dist/css/bootstrap.min.css">
+<div id="stopstart-highlight" style="width:450px;padding:40px">
     <!-- Language Select Dropdown -->
-    <table>
-        <tbody>
-        <tr align="center">
-            <td>
+   <div class="top-column" style="border-bottom:1px solid #e2e2e2;">
+       <img src="http://grow.orangescape.com/images/kissflow.png" style="max-height: 64px;opacity: 1;transition: opacity 0.001s 0.1s linear;padding: 12px 0px;max-width: 150px;">
 
-                    <select class="form-control" id="languageSelect" style="margin-left:10px;margin-top:10px;margin-bottom:10px">
-                        <option value="en">English</option>
-                        <option value="es">Spanish</option>
-                    </select>
-
-            </td>
-            <td>
-                <button class="btn btn-primary" id="highlight" style="margin-left:15px;margin-top:10px;margin-bottom:10px">Translate Text</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+   </div>
+   <div id="stop-highlight" style="padding-top:12px;border-bottom:1px solid #e2e2e2">
+         <p>Click on the below button to start the translation process</p>
+         <button class="btn btn-primary" id="highlight" style="border:1px solid #419d45;margin-left:0;margin-top:10px;margin-bottom:10px;background-color:#419d45">START TRANSLATE</button>
+   </div>
+    <div class="bottom-content" style="padding-top:12px;">
+        <p>If you want to apply translation for all users,kindly click the below button</p>
+        <button class="btn btn-primary" id="sync_translation" style="border:1px solid #419d45;margin-left:0;margin-top:10px;margin-bottom:10px;background-color:#419d45">APPLY TO All USERS</button>
+    </div>
 </div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="popup.js"></script>
-<script type="text/javascript" src="../bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>

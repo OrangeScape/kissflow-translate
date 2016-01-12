@@ -1937,8 +1937,10 @@ button.spellscape-close {
 
 .spellscape-modal-header {
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #419d45;
   min-height: 16.42857143px;
+  background-color:#419d45;
+  color:white;
 }
 
 .spellscape-modal-header .spellscape-close {
