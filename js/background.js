@@ -9,7 +9,9 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
             chrome.storage.local.set({'highlight': false},function(){});
             stopHighlight();
             break;
-        break;
+        case "sync-translation":
+             syncTranslation();
+             break;
     }
     return true;
 });
@@ -24,4 +26,10 @@ var highlightTags = function() {
 	chrome.tabs.getSelected(null, function(tab){
 	    chrome.tabs.sendMessage(tab.id, {type: "highlight"});
 	});
+}
+
+var syncTranslation=function(){
+    chrome.tabs.getSelected(null,function(tab){
+       chrome.tabs.sendMessage(tab.id,{type:"sync-translation"})
+    })
 }

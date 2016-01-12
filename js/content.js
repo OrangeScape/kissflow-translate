@@ -19,8 +19,10 @@ chrome.extension.onMessage.addListener(function(message, sender, sendResponse){
 				alert("GetText Module unavailable");
             break;
 		case "stop-highlight":
-		     window.postMessage(JSON.stringify({ type: "STOP_HIGHLIGHT", text: "Hello from the webpage!" }), "*");
-
-		break;
+		     window.postMessage(JSON.stringify({type: "STOP_HIGHLIGHT", text: "Hello from the webpage!" }), "*");
+             break;
+		case "sync-translation":
+		     window.postMessage(JSON.stringify({type:"SYNC_TRANSLATION", text: "Sync translation"}), "*");
+		     break;
 	}
 });

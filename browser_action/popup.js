@@ -5,7 +5,7 @@ window.onload=function(){
       chrome.storage.local.get("highlight",function(results){
 				    var highlight=results.highlight
 				    if(highlight){
-				       $("#stop-highlight").html("<button class='btn btn-primary' style='margin-left:15px;margin-top:10px;margin-bottom:10px' id='stop-highlighting'>Stop Highlight</button>")
+				       $("#stop-highlight").html("<button class='btn btn-primary' style='border:1px solid #419d45;margin-left:0;margin-top:10px;margin-bottom:10px;background-color:#419d45' id='stop-highlighting'>STOP HIGHLIGHT</button>")
                        $("#stop-highlighting").click(function(){
                           chrome.extension.sendMessage({
 			               "type": "stop-highlight"
@@ -22,6 +22,12 @@ window.onload=function(){
 		$("#highlight").click(function(){
 		   chrome.extension.sendMessage({
 			 "type": "req-highlight"
+		   });
+		})
+
+		$("#sync_translation").click(function(){
+		   chrome.extension.sendMessage({
+			 "type": "sync-translation"
 		   });
 		})
 
